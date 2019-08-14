@@ -1,0 +1,285 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Create account form template
+ *
+ * @var $this Mage_Customer_Block_Form_Register
+ */
+?>
+
+
+<div class = "dashboard">
+    <?php echo $this->getMessagesBlock()->getGroupedHtml()
+    ?>
+    <div class="box-account box-info">
+        <div class="box-head">
+            <h2><?php echo $this->__('Add Product') ?></h2>
+        </div>
+    </div>
+</div>
+
+<?php
+$required = explode(',', Mage::getStoreConfig('ng_product/product_required_settings/required'));    
+
+$url = Mage::getBaseUrl() . 'catalog/product/addfront';
+if (isset($_GET['image']) && !empty($_GET['image'])) {
+    $url = Mage::getBaseUrl() . 'catalog/product/editfront';
+}
+?>
+<form action="<?php echo $url; ?>" method="post" class="add-seller-product" id="form-validate" enctype="multipart/form-data" onsubmit="return validateForm();">    
+    <?php if (Mage::getStoreConfig('ng_product/product_settings/name')) : ?>
+        <div>
+            <p class="paddT12">					
+                <label class="label_area" for="name"><em>*</em>Name</label>
+                <input type="text" class="input_inner input-text <?php if (in_array("name", $required)) {echo "required-entry";}?>" maxlength="255" title="<?php echo $this->__('Image Name') ?>" name="name" id="name">          
+            </p>
+        </div>
+    <?php endif; ?>
+    <?php if (Mage::getStoreConfig('ng_product/product_settings/sku')) : ?>
+        <div>
+            <p class="paddT12">					
+                <label class="label_area" for="sku"><em>*</em>SKU</label>
+                <input type="text" class="input_inner input-text <?php if (in_array("sku", $required)) {echo "required-entry";}?>" maxlength="255" title="<?php echo $this->__('SKU') ?>" name="sku" id="sku">          
+            </p>
+        </div>
+    <?php endif; ?>
+    <?php if (Mage::getStoreConfig('ng_product/product_settings/description')) : ?>
+        <div>
+            <p class="paddT12">
+                <label class="label_area" for="description"><em>*</em>Description</label>
+                <textarea name="description" id="description" class="input_inner_area input-text <?php if (in_array("description", $required)) {echo "required-entry";}?>" title="<?php echo $this->__('Description') ?>"></textarea>
+            </p>
+        </div>
+    <?php endif; ?>
+    <?php if (Mage::getStoreConfig('ng_product/product_settings/short_description')) : ?>
+        <div>
+            <p class="paddT12">
+                <label class="label_area" for="short_description"><em>*</em>Short Description</label>
+                <textarea name="short_description" id="short_description" class="input_inner_area input-text <?php if (in_array("short_description", $required)) {echo "required-entry";}?>" title="<?php echo $this->__('Short Description') ?>"></textarea>
+            </p>
+        </div>
+    <?php endif; ?>
+    <?php if (Mage::getStoreConfig('ng_product/product_settings/weight')) : ?>
+        <div>
+            <p class="paddT12">					
+                <label class="label_area" for="weight"><em>*</em>Weight</label>
+                <input type="text" class="input_inner input-text <?php if (in_array("weight", $required)) {echo "required-entry";}?> validate-number validate-zero-or-greater" maxlength="255" title="<?php echo $this->__('Weight') ?>" name="weight" id="weight">          
+            </p>
+        </div>
+    <?php endif; ?>
+    <?php if (Mage::getStoreConfig('ng_product/product_settings/status')) : ?>
+        <div>
+            <p class="paddT12">					
+                <label class="label_area" for="status"><em>*</em>Status</label>
+                <select name="status" id="status" class="input_inner input-text <?php if (in_array("status", $required)) {echo "required-entry";}?>" style="width:292px;">                    
+                    <option value="1">Enabled</option>
+                    <option selected="selected" value="2">Disabled</option>
+                </select>            
+            </p>
+        </div>
+    <?php endif; ?>
+    <?php if (Mage::getStoreConfig('ng_product/product_settings/url_key')) : ?>
+        <div>
+            <p class="paddT12">					
+                <label class="label_area" for="url_key"><em>*</em>URL Key</label>
+                <input type="text" class="input_inner input-text <?php if (in_array("url_key", $required)) {echo "required-entry";}?>" maxlength="255" title="<?php echo $this->__('URL Key') ?>" name="url_key" id="url_key">          
+            </p>
+        </div>
+    <?php endif; ?>
+    <?php if (Mage::getStoreConfig('ng_product/product_settings/visibility')) : ?>
+        <div>
+            <p class="paddT12">	
+                <?php
+                $visibilityObj = new Mage_Catalog_Model_Product_Visibility();
+                $visibilityOptions = $visibilityObj->getAllOptions();
+                ?>
+                <label class="label_area" for="visibility"><em>*</em>Visibility</label>
+                <select name="visibility" id="visibility" class="input_inner input-text <?php if (in_array("visibility", $required)) {echo "required-entry";}?>" style="width:292px;">
+                    <?php
+                    foreach ($visibilityOptions as $options) {
+                        echo '<option value="' . $options["value"] . '">' . $options["label"] . '</option>';
+                    }
+                    ?>                
+                </select>             
+            </p>
+        </div>
+    <?php endif; ?>
+    <?php if (Mage::getStoreConfig('ng_product/product_settings/price')) : ?>
+        <div>
+            <p class="paddT12">					
+                <label class="label_area" for="price"><em>*</em>Price</label>
+                <input type="text" class="input_inner input-text <?php if (in_array("price", $required)) {echo "required-entry";}?> validate-number validate-zero-or-greater" maxlength="255" title="<?php echo $this->__('Price') ?>" name="price" id="price">          
+            </p>
+        </div>
+    <?php endif; ?>
+    <?php if (Mage::getStoreConfig('ng_product/product_settings/tax_class')) : ?>
+        <div>
+            <p class="paddT12">	
+                <?php
+                $taxClassObj = new Mage_Tax_Model_Class_Source_Product();
+                $taxClassOptions = $taxClassObj->getAllOptions()
+                ?>
+                <label class="label_area" for="tax_class"><em>*</em>Tax Class</label>
+                <select name="tax_class" id="tax_class" class="input_inner input-text <?php if (in_array("tax_class", $required)) {echo "required-entry";}?>" style="width:292px;">
+                    <?php
+                    foreach ($taxClassOptions as $options) {
+                        echo '<option value="' . $options["value"] . '">' . $options["label"] . '</option>';
+                    }
+                    ?>                
+                </select>               
+            </p>
+        </div>
+    <?php endif; ?>
+    <?php if (Mage::getStoreConfig('ng_product/product_settings/meta_title')) : ?>
+        <div>
+            <p class="paddT12">					
+                <label class="label_area" for="meta_title"><em>*</em>Meta Title</label>
+                <input type="text" class="input_inner input-text <?php if (in_array("meta_title", $required)) {echo "required-entry";}?>" maxlength="255" title="<?php echo $this->__('Meta Title') ?>" name="meta_title" id="meta_title">          
+            </p>
+        </div>
+    <?php endif; ?>
+    <?php if (Mage::getStoreConfig('ng_product/product_settings/meta_keyword')) : ?>
+        <div>
+            <p class="paddT12">
+                <label class="label_area" for="meta_keyword"><em>*</em>Meta Keywords</label>
+                <textarea name="meta_keyword" id="meta_keyword" class="input_inner_area input-text <?php if (in_array("meta_keyword", $required)) {echo "required-entry";}?>" title="<?php echo $this->__('Meta Keyword') ?>"></textarea>
+            </p>
+        </div>
+    <?php endif; ?>
+    <?php if (Mage::getStoreConfig('ng_product/product_settings/meta_description')) : ?>
+        <div>
+            <p class="paddT12">
+                <label class="label_area" for="meta_description"><em>*</em>Meta Description</label>
+                <textarea name="meta_description" id="meta_description" class="input_inner_area input-text <?php if (in_array("meta_description", $required)) {echo "required-entry";}?>" title="<?php echo $this->__('Meta Description') ?>"></textarea>
+            </p>
+        </div>
+    <?php endif; ?>
+    <?php if (Mage::getStoreConfig('ng_product/product_settings/qty')) : ?>
+        <div>
+            <p class="paddT12">					
+                <label class="label_area" for="qty"><em>*</em>Qty</label>
+                <input type="text" class="input_inner input-text <?php if (in_array("qty", $required)) {echo "required-entry";}?> validate-number validate-zero-or-greater" maxlength="255" title="<?php echo $this->__('Qty') ?>" name="qty" id="qty">          
+            </p>
+        </div>
+    <?php endif; ?>
+    <?php if (Mage::getStoreConfig('ng_product/product_settings/manage_stock')) : ?>
+        <div>
+            <p class="paddT12">					
+                <label class="label_area" for="manage_stock"><em>*</em>Manage Stock</label>
+                <select name="manage_stock" id="manage_stock" class="input_inner input-text <?php if (in_array("manage_stock", $required)) {echo "required-entry";}?>" style="width:292px;">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>         
+                </select>   
+            </p>
+        </div>
+    <?php endif; ?>
+    <?php if (Mage::getStoreConfig('ng_product/product_settings/is_in_stock')) : ?>
+        <div>
+            <p class="paddT12">		
+                <label class="label_area" for="is_in_stock"><em>*</em>Is In Stock</label>
+                <select name="is_in_stock" id="is_in_stock" class="input_inner input-text <?php if (in_array("is_in_stock", $required)) {echo "required-entry";}?>" style="width:292px;">
+                    <option value="1">In Stock</option>
+                    <option selected="selected" value="0">Out of Stock</option>         
+                </select>             
+            </p>
+        </div>
+    <?php endif; ?>
+    <?php if (Mage::getStoreConfig('ng_product/product_settings/categories')) : ?>
+        <div>
+            <p class="paddT12">
+                <?php
+                $category = Mage::getModel('catalog/category');
+                $tree = $category->getTreeModel();
+                $tree->load();
+                $ids = $tree->getCollection()->getAllIds();
+                ?>
+                <label class="label_area" for="categories"><em>*</em>Categories</label>
+                <select name="categories" id="categories" class="input_inner input-text <?php if (in_array("categories", $required)) {echo "required-entry";}?>" style="width:292px;">
+                    <?php
+                    echo '<option value="">-- Please Select --</option>';
+                    foreach ($ids as $id) {
+                        $cat = Mage::getModel('catalog/category');
+                        $cat->load($id);
+                        if ($cat->getIsActive()) {
+                            $dash = '';
+                            if ($cat->getLevel() == 3)
+                                $dash = "-";
+                            if ($cat->getLevel() == 4)
+                                $dash = "--";
+                            if ($cat->getLevel() == 5)
+                                $dash = "---";
+                            echo '<option value="' . $cat->getId() . '">' . $dash . ucwords($cat->getName()) . '</option>';
+                        }
+                    }
+                    ?>                                        
+                </select>
+            </p>
+        </div>
+    <?php endif; ?>
+    <?php if (Mage::getStoreConfig('ng_product/product_settings/websites')) : ?>
+        <div>
+            <p class="paddT12">	
+                <?php
+                $_websites = Mage::app()->getWebsites();
+                ?>
+                <label class="label_area" for="websites"><em>*</em>Websites</label>
+                <select name="websites" id="websites" class="input_inner input-text <?php if (in_array("websites", $required)) {echo "required-entry";}?>" style="width:292px;">
+                    <?php
+                    echo '<option value="">-- Please Select --</option>';
+                    foreach ($_websites as $options) {
+                        echo '<option value="' . $options["website_id"] . '">' . $options["name"] . '</option>';
+                    }
+                    ?>                
+                </select>                          
+            </p>
+        </div>
+    <?php endif; ?>
+    <?php if (Mage::getStoreConfig('ng_product/product_settings/image')) : ?>
+        <div>
+            <p class="paddT12">
+                <label class="label_area" for="image"><em>*</em>Upload Image</label>
+                <input type="file" class="<?php if (in_array("image", $required)) {echo "required-entry";}?>"  maxlength="255" title="<?php echo $this->__('Image') ?>" value="" name="image" id="btnUpload">
+            </p>
+        </div>
+    <?php endif; ?>
+    <div>
+        <input name="terms" type="checkbox" id="terms" value="agree" class="fleft input-text required-entry" style="width:20px"/>
+        <span class="paddL7 fleft" style="font-size:11px;"><strong>I have read and understood the terms and conditions.</strong></span> </p>
+    </div>
+    <span class="buy_now paddL15 fleft">
+        <input type="submit" style="height:23px;" title="<?php echo $this->__('Add Product') ?>" class="" value="<?php echo $this->__('Add Product') ?>" />
+    </span>
+    <input type="hidden" name="customer_group" id="customer_group" value="<?php echo Mage::getSingleton('customer/session')->getCustomerGroupId(); ?>" />
+    <input type="hidden" name="customer_email" id="customer_email" value="<?php echo Mage::getSingleton('customer/session')->getCustomer()->getEmail(); ?>" />
+</form>
+
+<script type="text/javascript">
+    //< ![CDATA[
+    var customForm = new VarienForm('form-validate');
+    //]]>
+</script>

@@ -1,0 +1,323 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Magento
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Academic Free License (AFL 3.0)
+* that is bundled with this package in the file LICENSE_AFL.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/afl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@magentocommerce.com so we can send you a copy immediately.
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade Magento to newer
+* versions in the future. If you wish to customize Magento for your
+* needs please refer to http://www.magentocommerce.com for more information.
+*
+* @category    NG
+* @package     NG_Product
+*/
+-->
+<config>
+    <tabs>
+        <ng translate="label" module="ng_product">
+            <label>NG</label>
+            <sort_order>2000</sort_order>
+        </ng>
+    </tabs>
+    <sections>
+        <ng_product translate="label" module="ng_product">
+            <class>separator-top</class>
+            <label>Product Configuration</label>
+            <tab>ng</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <link translate="label" module="ng_product">
+                    <label>New Link Setting</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>                            
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>                                              
+                        <name translate="label">
+                            <label>Link Name</label>
+                            <frontend_type>text</frontend_type>                            
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enter the name of link which you want to display in my account left navigation</comment>
+                        </name>                                              
+                    </fields>
+                </link>
+                <product_required_settings translate="label" module="ng_product">
+                    <label>Product Required Fields Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>                                             
+                        <required translate="label">
+                            <label>Required Fields</label>
+                            <frontend_type>multiselect</frontend_type>    
+                            <source_model>ng_product/system_config_source_required</source_model>                        
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Select multiple fields to make them required.</comment>
+                        </required>  
+                    </fields>  
+                </product_required_settings> 
+                <product_settings translate="label" module="ng_product">
+                    <label>Add Product Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>                                             
+                        <name translate="label">
+                            <label>Name</label>
+                            <frontend_type>select</frontend_type>    
+                            <source_model>ng_product/system_config_source_yesno</source_model>                        
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>select Enabled for show 'Name' field in add product form.</tooltip>
+                        </name>                                              
+                        <sku translate="label">
+                            <label>SKU</label>
+                            <frontend_type>select</frontend_type>    
+                            <source_model>ng_product/system_config_source_yesno</source_model>                        
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>select Enabled for show 'SKU' field in add product form.</tooltip>
+                        </sku>                                              
+                        <description translate="label">
+                            <label>Description</label>
+                            <frontend_type>select</frontend_type>    
+                            <source_model>ng_product/system_config_source_yesno</source_model>                        
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>select Enabled for show 'Description' field in add product form.</tooltip>
+                        </description>                                              
+                        <short_description translate="label">
+                            <label>Short Description</label>
+                            <frontend_type>select</frontend_type>    
+                            <source_model>ng_product/system_config_source_yesno</source_model>                        
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>select Enabled for show 'Short Description' field in add product form.</tooltip>
+                        </short_description>                                              
+                        <weight translate="label">
+                            <label>Weight</label>
+                            <frontend_type>select</frontend_type>    
+                            <source_model>ng_product/system_config_source_yesno</source_model>                        
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>select Enabled for show 'Weight' field in add product form.</tooltip>
+                        </weight>                                              
+                        <status translate="label">
+                            <label>Status</label>
+                            <frontend_type>select</frontend_type>    
+                            <source_model>ng_product/system_config_source_yesno</source_model>                        
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>select Enabled for show 'Status' field in add product form.</tooltip>
+                        </status>                                              
+                        <url_key translate="label">
+                            <label>URL Key</label>
+                            <frontend_type>select</frontend_type>    
+                            <source_model>ng_product/system_config_source_yesno</source_model>                        
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>select Enabled for show 'URL Key' field in add product form.</tooltip>
+                        </url_key>                                              
+                        <visibility translate="label">
+                            <label>Visibility</label>
+                            <frontend_type>select</frontend_type>    
+                            <source_model>ng_product/system_config_source_yesno</source_model>                        
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>select Enabled for show 'Visibility' field in add product form.</tooltip>
+                        </visibility>                                              
+                        <price translate="label">
+                            <label>Price</label>
+                            <frontend_type>select</frontend_type>    
+                            <source_model>ng_product/system_config_source_yesno</source_model>                        
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>select Enabled for show 'Price' field in add product form.</tooltip>
+                        </price>                                              
+                        <tax_class translate="label">
+                            <label>Tax Class</label>
+                            <frontend_type>select</frontend_type>    
+                            <source_model>ng_product/system_config_source_yesno</source_model>                        
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>select Enabled for show 'Tax Class' field in add product form.</tooltip>
+                        </tax_class>                                              
+                        <meta_title translate="label">
+                            <label>Meta Title</label>
+                            <frontend_type>select</frontend_type>    
+                            <source_model>ng_product/system_config_source_yesno</source_model>                        
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>select Enabled for show 'Meta Title' field in add product form.</tooltip>
+                        </meta_title>                                              
+                        <meta_keyword translate="label">
+                            <label>Meta Keywords</label>
+                            <frontend_type>select</frontend_type>    
+                            <source_model>ng_product/system_config_source_yesno</source_model>                        
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>select Enabled for show 'Meta Keywords' field in add product form.</tooltip>
+                        </meta_keyword>                                              
+                        <meta_description translate="label">
+                            <label>Meta Description</label>
+                            <frontend_type>select</frontend_type>    
+                            <source_model>ng_product/system_config_source_yesno</source_model>                        
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>select Enabled for show 'Meta Description' field in add product form.</tooltip>
+                        </meta_description>                                              
+                        <qty translate="label">
+                            <label>Qty</label>
+                            <frontend_type>select</frontend_type>    
+                            <source_model>ng_product/system_config_source_yesno</source_model>                        
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>select Enabled for show 'Qty' field in add product form.</tooltip>
+                        </qty>                                              
+                        <manage_stock translate="label">
+                            <label>Manage Stock</label>
+                            <frontend_type>select</frontend_type>    
+                            <source_model>ng_product/system_config_source_yesno</source_model>                        
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>select Enabled for show 'Manage Stock' field in add product form.</tooltip>
+                        </manage_stock>                                              
+                        <is_in_stock translate="label">
+                            <label>Is In Stock</label>
+                            <frontend_type>select</frontend_type>    
+                            <source_model>ng_product/system_config_source_yesno</source_model>                        
+                            <sort_order>16</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>select Enabled for show 'Is In Stock' field in add product form.</tooltip>
+                        </is_in_stock>                                              
+                        <categories translate="label">
+                            <label>Categories</label>
+                            <frontend_type>select</frontend_type>    
+                            <source_model>ng_product/system_config_source_yesno</source_model>                        
+                            <sort_order>17</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>select Enabled for show 'Categories' field in add product form.</tooltip>
+                        </categories>                                              
+                        <websites translate="label">
+                            <label>Websites</label>
+                            <frontend_type>select</frontend_type>    
+                            <source_model>ng_product/system_config_source_yesno</source_model>                        
+                            <sort_order>18</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>select Enabled for show 'Websites' field in add product form.</tooltip>
+                        </websites>                                              
+                        <image translate="label">
+                            <label>Image</label>
+                            <frontend_type>select</frontend_type>    
+                            <source_model>ng_product/system_config_source_yesno</source_model>                        
+                            <sort_order>19</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <tooltip>select Enabled for show 'Image' field in add product form.</tooltip>
+                        </image>                                              
+                    </fields>
+                </product_settings>   
+                <product_credentials_settings translate="label" module="ng_product">
+                    <label>Credentials Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>                                             
+                        <username translate="label">
+                            <label>Soap Username</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enter username of soap api.</comment>
+                        </username> 
+                        <password translate="label">
+                            <label>Soap Password</label>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enter password of soap api.</comment>
+                        </password> 
+                    </fields>  
+                </product_credentials_settings>     
+            </groups>
+        </ng_product>
+    </sections>
+</config>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>ng_product</name>
+    <version>1.0.1</version>
+    <stability>stable</stability>
+    <license>MIT</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>This extension is related to add simple product from frontend.</summary>
+    <description>This extension is related to add simple product from frontend my account section.</description>
+    <notes>1.0.1</notes>
+    <authors><author><name>NG</name><user>extensionsng</user><email>extensionsng@gmail.com</email></author></authors>
+    <date>2015-06-16</date>
+    <time>18:36:31</time>
+    <contents><target name="magecommunity"><dir name="NG"><dir name="Product"><dir name="Helper"><file name="Data.php" hash="5a4f25629efde2df669b045ddedc1934"/></dir><dir name="Model"><dir name="System"><dir name="Config"><dir name="Source"><file name="required.php" hash="6a892e015c9c57ab933dd3497ce47854"/><file name="yesno.php" hash="8f1179bfb6bc1b90928f8c13d3aec06d"/></dir></dir></dir></dir><dir name="controllers"><dir name="Catalog"><file name="ProductController.php" hash="1e2f76d4d788fd5b95c782d0be1933ce"/></dir><file name="IndexController.php" hash="8abfc439c2dc6e51bf8cf423b9ba5394"/></dir><dir name="etc"><file name="adminhtml.xml" hash="62f094d4373fd3205ba5fcc49798ffe0"/><file name="config.xml" hash="dce5df08bd8013fce7249bc2654f88e1"/><file name="system.xml" hash="e9505177d4cdcb263d47da5723ae0aa7"/></dir></dir></dir></target><target name="magedesign"><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><dir name="NG"><file name="product.xml" hash="bb99cc93b0ee90025729c7a0e00e98c7"/></dir></dir><dir name="template"><dir name="NG"><file name="add.phtml" hash="9282b27f2124a630b8f0c092447c48ef"/></dir></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="NG_Product.xml" hash="8aef7fe15e1732e7dc5417ffcfbebba5"/></dir></target><target name="magemedia"><dir name="catalog"><dir name="product"><dir name="images"><file name="1434476196-Lighthouse.jpg" hash="8969288f4245120e7c3870287cce0ff3"/></dir></dir></dir></target><target name="mageskin"><dir name="frontend"><dir name="base"><dir name="default"><dir name="css"><dir name="NG"><file name="product.css" hash="29eba9a239d08d15c0a528ee9c137388"/></dir></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.1.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

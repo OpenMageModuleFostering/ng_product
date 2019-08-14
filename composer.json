@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/ng_product",
+    "type": "magento-module",
+    "license": "MIT",
+    "homepage": "",
+    "description": "This extension is related to add simple product from frontend.",
+    "authors": [
+    {
+        "name": "NG",
+        "email": "extensionsng@gmail.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
